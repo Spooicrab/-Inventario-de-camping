@@ -34,17 +34,38 @@ switch (option) {
       }
       else if(Resultado < EspacioDisponible){
         alert("Ingreso exitoso!"); 
-        let EspacioDisponible= EspacioDisponible - Resultado;
-        option = 0; //Para volver al menu principal 
+        option = "0";
+        EspacioDisponible= EspacioDisponible - Resultado;
+         //Para volver al menu principal 
       }
       else{
         alert("Error!");
         option= 1; //Vuelve a intentarlo
       }
-      
+    option= 0;
     }
         else if (Ingreso==2){
-      alert("ingreso carpas chicas")
+          let CarpaChica= parseInt(prompt("Ingrese cantidad de Carpas"));      
+          let CarpaGrande=0;
+          let Resultado=NuevoIngreso(CarpaGrande, CarpaChica);
+          if (Resultado == EspacioDisponible){ //llenamos, volvemos al menu principal
+            alert("Ingreso Exitoso, No hay mas espacio Disponible");
+            EspacioDisponible=0;
+            option= 0;} //aunque pongo option 0, no me devuelve al menu principal
+          else if (Resultado > EspacioDisponible){  //No hay tanto lugar
+            alert("No hay espacio suficiente para el valor ingresado, Por favor Revise el espacio Disponible");
+            option= 0; //Para volver al menu principal 
+          }
+          else if(Resultado < EspacioDisponible){
+            alert("Ingreso exitoso!"); 
+            EspacioDisponible= EspacioDisponible - Resultado;
+            option = 0; //Para volver al menu principal 
+          }
+          else{
+            alert("Error!");
+            option= 1; //Vuelve a intentarlo
+          }
+        option=0;
       }
     }    
     else if (NIngreso== 2)
