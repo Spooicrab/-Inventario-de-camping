@@ -19,14 +19,17 @@ while (option == 0) {
     
       if(EspacioDisponible ==0){//En caso de estar llenos, no se habilitará nuevos ingresos
     
-        alert("Estamos llenos!");}
+        alert("Estamos llenos!");
+      
+      }
     
       let NIngreso= parseInt(prompt("¿Qué tipo de ingreso? \n 1. Ingreso de Tipo Unico. \n 2. Multiple Tipo de Carpas. \n 9. Salir"));       
     
       if (NIngreso== 1){ //Ingreso tipo unico
 
         let Ingreso= parseInt(prompt("Qué tipo de carpa? \n 1. Carpa Grande. \n 2. Carpa Chica."));  //elegimos el tipo de carpa
-      if (Ingreso==1){        
+      
+        if (Ingreso==1){        
        
         let CarpaGrande= parseInt(prompt("Ingrese cantidad de Carpas"));      
       
@@ -125,7 +128,7 @@ while (option == 0) {
     
     }    
 
-      else if (NIngreso== 2){
+      else if (NIngreso== 2){  // Aquí se podran ingresar varias carpas de ambos tipos
       
       let CarpaGrande= parseInt(prompt("Ingrese la Cantidad de Carpas Grandes"));
 
@@ -133,7 +136,7 @@ while (option == 0) {
 
       let Resultado= NuevoIngreso(CarpaGrande, CarpaChica);
 
-      if (Resultado == EspacioDisponible){ //llenamos, volvemos al menu principal
+      if (Resultado == EspacioDisponible){ //llenos, volvemos al menu principal
 
         alert("Ingreso Exitoso, No hay mas espacio Disponible");
      
@@ -171,7 +174,6 @@ while (option == 0) {
       }  
 
     }
-    //otro ingreso
           
     else{
 
@@ -182,7 +184,14 @@ while (option == 0) {
     }
 
    break;
-    case 2: //ver esopacios
+
+    case 2: //ver espacios
+
+      let GrandeDisp= Math.ceil(EspacioDisponible/4);
+
+      let ChicaDisp= Math.floor(EspacioDisponible/2);
+
+      alert("Hay espacio para ${GrandeDisp} Carpas Grandes y ${ChicaDisp} Carpas Chicas");
       alert("VER ESPACIOS");
 
       // Aquí iría el código para agregar un producto
