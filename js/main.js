@@ -191,8 +191,36 @@ while (option == 0) {
 
       let ChicaDisp= Math.floor(EspacioDisponible/2);
 
-      alert("Hay espacio para ${GrandeDisp} Carpas Grandes y ${ChicaDisp} Carpas Chicas");
-      alert("VER ESPACIOS");
+      alert("Hay espacio para "+ GrandeDisp+ " Carpas Grandes y para "+ ChicaDisp+ " Carpas chicas");
+
+      let EspacioNav= parseInt(prompt("Elija una opción. \n 1. Ver espacio disponible solo para Carpas chicas \n 2. Ver espacio disponible solo para Carpas Grandes"));
+
+      switch(EspacioNav){
+
+        case 1:
+
+        alert("Hay espacio para "+ ChicaDisp + " Carpas chicas.");
+
+        option= 2;
+
+        break
+
+        case 2:
+
+        alert("Hay espacio para "+ GrandeDisp + " Carpas chicas.");
+
+        option=1;
+
+        break
+
+        default:
+
+        alert("Ingrese una opcion valida");
+
+        option= 2;
+
+      }
+
 
       // Aquí iría el código para agregar un producto
 
