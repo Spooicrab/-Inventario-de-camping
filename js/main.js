@@ -1,5 +1,5 @@
 // Definiciones
-let option = 0;
+let menu = 0;
 
 let EspacioDisponible = 40;
 
@@ -7,10 +7,7 @@ function NuevoIngreso(CarpaGrande, CarpaChica) {
   return CarpaGrande * 2 + CarpaChica;
 }
 
-// Creamos un bucle "while" para que el menú se muestre una y otra vez hasta que el usuario decida salir
-
-while (option == 0) {
-  // Mostramos el menú en un prompt y almacenamos la opción elegida por el usuario
+for (menu = 0; menu <= 2; ) {
   option = parseInt(
     prompt(
       "¿Qué opción deseas elegir??\n 1. Nuevo Ingreso \n 2. Espacio Disponible \n 9. Salir"
@@ -23,6 +20,8 @@ while (option == 0) {
         //En caso de estar llenos, no se habilitará nuevos ingresos
 
         alert("Estamos llenos!");
+
+        menu = 1;
       }
 
       let NIngreso = parseInt(
@@ -50,7 +49,7 @@ while (option == 0) {
 
             EspacioDisponible = 0;
 
-            option = 0;
+            menu = 0;
           } else if (Resultado > EspacioDisponible) {
             //No hay tanto lugar
 
@@ -58,21 +57,21 @@ while (option == 0) {
               "No hay espacio suficiente para el valor ingresado, Por favor Revise el espacio Disponible"
             );
 
-            option = 0;
+            menu = 0;
           } //Para volver al menu principal
           else if (Resultado < EspacioDisponible) {
             alert("Ingreso exitoso!");
 
-            option = "0";
+            menu = 0;
 
             EspacioDisponible = EspacioDisponible - Resultado;
           } else {
             alert("Error!");
 
-            option = 1; //Vuelve a intentarlo
+            Ingreso = 1; //Vuelve a intentarlo
           }
 
-          option = 0;
+          menu = 1;
         } else if (Ingreso == 2) {
           let CarpaChica = parseInt(prompt("Ingrese cantidad de Carpas"));
 
@@ -87,7 +86,7 @@ while (option == 0) {
 
             EspacioDisponible = 0;
 
-            option = 0;
+            menu = 1;
           } else if (Resultado > EspacioDisponible) {
             //No hay tanto lugar
 
@@ -95,20 +94,24 @@ while (option == 0) {
               "No hay espacio suficiente para el valor ingresado, Por favor Revise el espacio Disponible"
             );
 
-            option = 0; //Para volver al menu principal
+            menu = 1; //Para volver al menu principal
           } else if (Resultado < EspacioDisponible) {
             alert("Ingreso exitoso!");
 
             EspacioDisponible = EspacioDisponible - Resultado;
 
-            option = 0; //Para volver al menu principal
+            menu = 1; //Para volver al menu principal
           } else {
             alert("Error!");
 
-            option = 1; //Vuelve a intentarlo
+            Ingreso = 2; //Vuelve a intentarlo
           }
 
-          option = 0;
+          menu = 1;
+        } else {
+          alert("Error!");
+
+          Ingreso = 1; //Vuelve a intentarlo
         }
       } else if (NIngreso == 2) {
         // Aquí se podran ingresar varias carpas de ambos tipos
@@ -130,7 +133,7 @@ while (option == 0) {
 
           EspacioDisponible = 0;
 
-          option = 0;
+          menu = 1;
         } else if (Resultado > EspacioDisponible) {
           //No hay tanto lugar
 
@@ -138,30 +141,35 @@ while (option == 0) {
             "No hay espacio suficiente para el valor ingresado, Por favor Revise el espacio Disponible"
           );
 
-          option = 0; //Para volver al menu principal
+          menu = 1; //Para volver al menu principal
         } else if (Resultado < EspacioDisponible) {
           alert("Ingreso exitoso!");
 
           EspacioDisponible = EspacioDisponible - Resultado;
 
-          option = 0; //Para volver al menu principal
+          menu = 1; //Para volver al menu principal
         } else {
           alert("Error!");
 
-          option = 1; //Vuelve a intentarlo
+          NIngreso = 2; //Vuelve a intentarlo
         }
       } else {
         alert("--Error-- \n Volviendo al menú Principal.");
 
-        option = 0;
+        menu = 1;
       }
 
       break;
 
     case 2: //ver espacios
-      let GrandeDisp = Math.ceil(EspacioDisponible / 4);
+      if (EspacioDisponible == 0) {
+        //En caso de estar llenos, no se habilitará nuevos ingresos
 
-      let ChicaDisp = Math.floor(EspacioDisponible / 2);
+        alert("Estamos llenos!");
+      }
+      let ChicaDisp = Math.ceil(EspacioDisponible / 4);
+
+      let GrandeDisp = Math.floor(EspacioDisponible / 2);
 
       alert(
         "Hay espacio para " +
@@ -179,23 +187,23 @@ while (option == 0) {
 
       switch (EspacioNav) {
         case 1:
-          alert("Hay espacio para " + ChicaDisp + " Carpas chicas.");
+          alert("Hay espacio para " + EspacioDisponible + " Carpas chicas.");
 
-          option = 2;
+          menu = 1;
 
           break;
 
         case 2:
-          alert("Hay espacio para " + GrandeDisp + " Carpas chicas.");
+          alert("Hay espacio para " + GrandeDisp + " Carpas Grandes.");
 
-          option = 1;
+          menu = 1;
 
           break;
 
         default:
           alert("Ingrese una opcion valida");
 
-          option = 2;
+          menu = 1;
       }
 
       // Aquí iría el código para agregar un producto
@@ -203,14 +211,14 @@ while (option == 0) {
       break;
 
     case 9:
-      alert("¡Adiós!");
-
+      menu = 3;
+      alert("Adios");
       break;
 
     default:
       alert("Opción inválida.");
       2;
 
-      option = 0;
+      menu = 1;
   }
 }
