@@ -224,3 +224,8 @@ for (menu = 0; menu <= 2; ) {
       menu = 1;
   }
 }
+
+
+
+//Alquileres
+
