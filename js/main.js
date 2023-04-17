@@ -224,6 +224,7 @@ for (menu = 0; menu <= 2; ) {
       menu = 1;
   }
 }
+<<<<<<< HEAD
 
 
 
@@ -232,3 +233,5 @@ for (menu = 0; menu <= 2; ) {
 //test 1
 
 //test 2
+=======
+>>>>>>> parent of 18c2284 (Update main.js)
