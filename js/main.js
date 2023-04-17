@@ -181,9 +181,10 @@ for (menu = 0; menu <= 2; ) {
           " Carpas Grandes y para " +
           ChicaDisp +
           " Carpas chicas"
-      ); //aqui mostramos caunto espacio hay para carpas grandes Y chicas; 
+      ); //aqui mostramos caunto espacio hay para carpas grandes Y chicas;
 
-      let EspacioNav = parseInt( //aqui podremos elegir cuanto espacio disponible hay para carpas grandes O chicas
+      let EspacioNav = parseInt(
+        //aqui podremos elegir cuanto espacio disponible hay para carpas grandes O chicas
         prompt(
           "Elija una opción. \n 1. Ver espacio disponible solo para Carpas chicas \n 2. Ver espacio disponible solo para Carpas Grandes"
         )
@@ -212,6 +213,11 @@ for (menu = 0; menu <= 2; ) {
 
       break;
 
+    case 3: // crear array con objetos a alquilar, usando un metodo constructor de objetos dentro de un array para poder verificar si hay stock disponible para alquilar
+    
+    
+
+
     case 9: //al ingresar "9", el bucle termina y se cierra.
       menu = 3;
       alert("Adios");
@@ -224,8 +230,6 @@ for (menu = 0; menu <= 2; ) {
       menu = 1;
   }
 }
-
-
 
 //Alquileres
 
