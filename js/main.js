@@ -214,73 +214,31 @@ for (menu = 0; menu <= 2; ) {
       break;
 
     case 3: // crear array con objetos a alquilar, usando un metodo constructor de objetos dentro de un array para poder verificar si hay stock disponible para alquilar
-
       //Alquileres
 
-      function objetosN(nombre, disponibilidad, arrendatario, stock) { // creamos el metodo constructor de objetos
+      function objetosN(nombre, disponibilidad, arrendatario, stock) {
+        // creamos el metodo constructor de objetos
         this.nombre = nombre;
         this.disponibilidad = disponibilidad;
         this.arrendatario = arrendatario;
         this.stock = stock;
       }
-      
+
       // array de objetos vacío, iremos añadiendo usando el .push
       let Objetos = [];
-      
+
       let objeto1 = new objetosN("Mesa", true, null, 3); // añadimos 3 Mesas
       Objetos.push(objeto1);
-      
+
       let objeto2 = new objetosN("CarpaGrande", true, null, 2); // añadimos 2 carpas grandes
       Objetos.push(objeto2);
-      
+
       let objeto3 = new objetosN("Silla", true, null, 2); // añadimos 2 sillas
       Objetos.push(objeto3);
-      
-      console.log(Objetos); // Imprimimos el array de objetos
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
+
+      const objetoindex= prompt("¿Qué desea alquilar? \n 1. Mesa\n 2. Carpa Grande\n 3. Silla");
       
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-      
     case 9: //al ingresar "9", el bucle termina y se cierra
       menu = 3;
       alert("Adios");
