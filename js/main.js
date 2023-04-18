@@ -11,7 +11,7 @@ for (menu = 0; menu <= 2; ) {
   //Bucle for para que poder reingresar al menu principal
   option = parseInt(
     prompt(
-      "¿Qué opción deseas elegir??\n 1. Nuevo Ingreso \n 2. Espacio Disponible \n 9. Salir"
+      "¿Qué opción deseas elegir??\n 1. Nuevo Ingreso \n 2. Espacio Disponible \n 3.Alquileres \n 9. Salir"
     ) //Aqui se podrá navegar por las distintas opciones
   );
 
@@ -216,10 +216,10 @@ for (menu = 0; menu <= 2; ) {
     case 3: // crear array con objetos a alquilar, usando un metodo constructor de objetos dentro de un array para poder verificar si hay stock disponible para alquilar
       //Alquileres
 
-      function objetosN(nombre, disponibilidad, arrendatario, stock) {
+      function objetosN(nombre, disponible, arrendatario, stock) {
         // creamos el metodo constructor de objetos
         this.nombre = nombre;
-        this.disponibilidad = disponibilidad;
+        this.disponible = disponible;
         this.arrendatario = arrendatario;
         this.stock = stock;
       }
@@ -236,9 +236,31 @@ for (menu = 0; menu <= 2; ) {
       let objeto3 = new objetosN("Silla", true, null, 2); // añadimos 2 sillas
       Objetos.push(objeto3);
 
-      const objetoindex= prompt("¿Qué desea alquilar? \n 1. Mesa\n 2. Carpa Grande\n 3. Silla");
+      const objetoindex = prompt(
+        "¿Qué desea alquilar? \n 1. Mesa\n 2. Carpa Grande\n 3. Silla"
+      );
+      const objeto = Objetos[objetoindex - 1];
+      if (objeto.disponible) {
+        let Nstock = prompt(
+          "¿Cuántos desea alquilar? Hay " +
+            objeto.stock +
+            " unidades disponibles"
+        );
+        if (Nstock <= objeto.stock) {
+          // verifica si hay suficientes unidades disponibles
+          objeto.stock -= Nstock;
+          objeto.disponible = objeto.stock > 0; // actualiza el valor de la disponibilidad según el stock
+          alert("¡Alquiler realizado con éxito!");
+          menu=1;
+        } else {
+          alert("Lo siento, no hay suficientes unidades disponibles.");
+          menu=1;
+        }
+      } else {
+        alert("Lo siento, este objeto no está disponible para alquilar.");
+        menu=1;
+      }
       
-
     case 9: //al ingresar "9", el bucle termina y se cierra
       menu = 3;
       alert("Adios");
