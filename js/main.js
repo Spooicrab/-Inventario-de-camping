@@ -1,7 +1,28 @@
-// Definiciones
-let menu = 0;
+/*   SEGUNDA PREENTREGA: 
 
-let EspacioDisponible = 40;
+  voy a añadir la opcion de alquilar objetos; Voy a añadir objetos a un array con las propiedades de stock, y el nombre del arrendatario como null hasta que sean alquilados, donde se modificara ese valor */
+
+function objetosN(nombre, disponible, arrendatario, stock) {
+  // creamos el metodo constructor de objetos
+  this.nombre = nombre;
+  this.disponible = disponible;
+  this.arrendatario = arrendatario;
+  this.stock = stock;
+}
+
+// array de objetos vacío, iremos añadiendo usando el .push
+let Objetos = [];
+
+let objeto1 = new objetosN("Mesa", true, null, 3); // añadimos 3 Mesas
+Objetos.push(objeto1);
+
+let objeto2 = new objetosN("CarpaGrande", true, null, 2); // añadimos 2 carpas grandes
+Objetos.push(objeto2);
+
+let objeto3 = new objetosN("Silla", true, null, 2); // añadimos 2 sillas
+Objetos.push(objeto3);
+
+let EspacioDisponible = 40; //esto sea usado para añadir carpas
 
 function NuevoIngreso(CarpaGrande, CarpaChica) {
   return CarpaGrande * 2 + CarpaChica;
@@ -203,28 +224,8 @@ while (loop == true) {
     case 3: // crear array con objetos a alquilar, usando un metodo constructor de objetos dentro de un array para poder verificar si hay stock disponible para alquilar
       //Alquileres
 
-      function objetosN(nombre, disponible, arrendatario, stock) {
-        // creamos el metodo constructor de objetos
-        this.nombre = nombre;
-        this.disponible = disponible;
-        this.arrendatario = arrendatario;
-        this.stock = stock;
-      }
-
-      // array de objetos vacío, iremos añadiendo usando el .push
-      let Objetos = [];
-
-      let objeto1 = new objetosN("Mesa", true, null, 3); // añadimos 3 Mesas
-      Objetos.push(objeto1);
-
-      let objeto2 = new objetosN("CarpaGrande", true, null, 2); // añadimos 2 carpas grandes
-      Objetos.push(objeto2);
-
-      let objeto3 = new objetosN("Silla", true, null, 2); // añadimos 2 sillas
-      Objetos.push(objeto3);
-
-      const objetoindex = prompt(
-        "¿Qué desea alquilar? \n 1. Mesa\n 2. Carpa Grande\n 3. Silla"
+      const objetoindex = parseInt(
+        prompt("¿Qué desea alquilar? \n 1. Mesa\n 2. Carpa Grande\n 3. Silla")
       );
       const objeto = Objetos[objetoindex - 1];
       if (objeto.disponible) {
@@ -238,6 +239,7 @@ while (loop == true) {
           objeto.stock -= Nstock;
           objeto.disponible = objeto.stock > 0; // actualiza el valor de la disponibilidad según el stock
           alert("¡Alquiler realizado con éxito!");
+
           break;
         } else {
           alert("Lo siento, no hay suficientes unidades disponibles.");
@@ -249,14 +251,13 @@ while (loop == true) {
       }
 
     case 9: //al ingresar "9", el bucle termina y se cierra
-     alert("Adios");
-      loop=false;
+      alert("Adios");
+      loop = false;
       break;
 
     default: //en caso de ingresar algun otro valor, se volvera al menu principal.
       alert("Opción inválida.");
   }
-  
 }
 
 //Alquileres
