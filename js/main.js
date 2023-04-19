@@ -6,8 +6,8 @@ let EspacioDisponible = 40;
 function NuevoIngreso(CarpaGrande, CarpaChica) {
   return CarpaGrande * 2 + CarpaChica;
 }
-
-for (menu = 0; menu <= 2; ) {
+let loop = true;
+while (loop == true) {
   //Bucle for para que poder reingresar al menu principal
   option = parseInt(
     prompt(
@@ -21,8 +21,7 @@ for (menu = 0; menu <= 2; ) {
         //En caso de estar llenos, no se habilitará nuevos ingresos
 
         alert("Estamos llenos!");
-
-        menu = 1;
+        break;
       }
 
       let NIngreso = parseInt(
@@ -52,29 +51,24 @@ for (menu = 0; menu <= 2; ) {
             alert("Ingreso Exitoso, No hay mas espacio Disponible");
 
             EspacioDisponible = 0;
-
-            menu = 0;
+            break;
           } else if (Resultado > EspacioDisponible) {
             //No hay tanto lugar, volviendo al menu principal
 
             alert(
               "No hay espacio suficiente para el valor ingresado, Por favor Revise el espacio Disponible"
             );
-
-            menu = 0;
+            break;
           } else if (Resultado < EspacioDisponible) {
             alert("Ingreso exitoso!"); //El ingreso fue exitoso y se puede seguir ingresando carpas. El espacio disponible es almacenado y se sigue corriendo el programa con este dato presente
 
-            menu = 0;
-
             EspacioDisponible = EspacioDisponible - Resultado;
+            break;
           } else {
             alert("Error!");
 
             Ingreso = 1; //Vuelve a intentarlo
           }
-
-          menu = 1;
         } else if (Ingreso == 2) {
           let CarpaChica = parseInt(prompt("Ingrese cantidad de Carpas"));
 
@@ -89,7 +83,7 @@ for (menu = 0; menu <= 2; ) {
 
             EspacioDisponible = 0;
 
-            menu = 1;
+            break;
           } else if (Resultado > EspacioDisponible) {
             //No hay tanto lugar
 
@@ -97,20 +91,20 @@ for (menu = 0; menu <= 2; ) {
               "No hay espacio suficiente para el valor ingresado, Por favor Revise el espacio Disponible"
             );
 
-            menu = 1; //Para volver al menu principal
+            break; //Para volver al menu principal
           } else if (Resultado < EspacioDisponible) {
             alert("Ingreso exitoso!");
 
             EspacioDisponible = EspacioDisponible - Resultado;
 
-            menu = 1; //Para volver al menu principal
+            break; //Para volver al menu principal
           } else {
             alert("Error!");
 
             Ingreso = 2; //Vuelve a intentarlo
           }
 
-          menu = 1;
+          break;
         } else {
           alert("Error!");
 
@@ -136,7 +130,7 @@ for (menu = 0; menu <= 2; ) {
 
           EspacioDisponible = 0;
 
-          menu = 1;
+          break;
         } else if (Resultado > EspacioDisponible) {
           //No hay tanto lugar
 
@@ -144,13 +138,13 @@ for (menu = 0; menu <= 2; ) {
             "No hay espacio suficiente para el valor ingresado, Por favor Revise el espacio Disponible"
           );
 
-          menu = 1; //Para volver al menu principal
+          break; //Para volver al menu principal
         } else if (Resultado < EspacioDisponible) {
           alert("Ingreso exitoso!");
 
           EspacioDisponible = EspacioDisponible - Resultado;
 
-          menu = 1; //Para volver al menu principal
+          break; //Para volver al menu principal
         } else {
           alert("Error!");
 
@@ -159,9 +153,8 @@ for (menu = 0; menu <= 2; ) {
       } else {
         alert("--Error-- \n Volviendo al menú Principal.");
 
-        menu = 1;
+        break;
       }
-
       break;
 
     case 2: //Aqui se vera cuanto espacio disponible hay para nuevos ingresos
@@ -194,21 +187,15 @@ for (menu = 0; menu <= 2; ) {
         case 1:
           alert("Hay espacio para " + EspacioDisponible + " Carpas chicas.");
 
-          menu = 1;
-
           break;
 
         case 2:
           alert("Hay espacio para " + GrandeDisp + " Carpas Grandes.");
 
-          menu = 1;
-
           break;
 
         default:
           alert("Ingrese una opcion valida");
-
-          menu = 1;
       }
 
       break;
@@ -251,27 +238,25 @@ for (menu = 0; menu <= 2; ) {
           objeto.stock -= Nstock;
           objeto.disponible = objeto.stock > 0; // actualiza el valor de la disponibilidad según el stock
           alert("¡Alquiler realizado con éxito!");
-          menu=1;
+          break;
         } else {
           alert("Lo siento, no hay suficientes unidades disponibles.");
-          menu=1;
+          break;
         }
       } else {
         alert("Lo siento, este objeto no está disponible para alquilar.");
-        menu=1;
+        break;
       }
-      
+
     case 9: //al ingresar "9", el bucle termina y se cierra
-      menu = 3;
-      alert("Adios");
+     alert("Adios");
+      loop=false;
       break;
 
     default: //en caso de ingresar algun otro valor, se volvera al menu principal.
       alert("Opción inválida.");
-      2;
-
-      menu = 1;
   }
+  
 }
 
 //Alquileres
