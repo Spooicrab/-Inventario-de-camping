@@ -239,7 +239,6 @@ while (loop == true) {
           objeto.stock -= Nstock;
           objeto.disponible = objeto.stock > 0; // actualiza el valor de la disponibilidad según el stock
           alert("¡Alquiler realizado con éxito!");
-
           break;
         } else {
           alert("Lo siento, no hay suficientes unidades disponibles.");
