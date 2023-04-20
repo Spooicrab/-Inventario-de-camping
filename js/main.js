@@ -2,27 +2,35 @@
 
   voy a añadir la opcion de alquilar objetos; Voy a añadir objetos a un array con las propiedades de stock, y el nombre del arrendatario como null hasta que sean alquilados, donde se modificara ese valor */
 
-function objetosN(nombre, disponible, arrendatario, stock) {
+function objetosN(nombre, disponible, stock) {
   // creamos el metodo constructor de objetos
   this.nombre = nombre;
   this.disponible = disponible;
-  this.arrendatario = arrendatario;
   this.stock = stock;
 }
+
+/* 
+function alquilar(producto) {
+  // creamos el metodo constructor de objetos
+  this.producto = producto;
+}
+ */
 
 // array de objetos vacío, iremos añadiendo usando el .push
 let Objetos = [];
 
-let objeto1 = new objetosN("Mesa", true, null, 3); // añadimos 3 Mesas
+let objeto1 = new objetosN("Mesa", true, 3); // añadimos 3 Mesas
 Objetos.push(objeto1);
 
-let objeto2 = new objetosN("CarpaGrande", true, null, 2); // añadimos 2 carpas grandes
+let objeto2 = new objetosN("CarpaGrande", true, 2); // añadimos 2 carpas grandes
 Objetos.push(objeto2);
 
-let objeto3 = new objetosN("Silla", true, null, 2); // añadimos 2 sillas
+let objeto3 = new objetosN("Silla", true, 2); // añadimos 2 sillas
 Objetos.push(objeto3);
 
-let EspacioDisponible = 40; //esto sea usado para añadir carpas
+let alquilados = [];
+
+let EspacioDisponible = 40; //esto sera usado para añadir carpas
 
 function NuevoIngreso(CarpaGrande, CarpaChica) {
   return CarpaGrande * 2 + CarpaChica;
@@ -239,6 +247,7 @@ while (loop == true) {
           objeto.stock -= Nstock;
           objeto.disponible = objeto.stock > 0; // actualiza el valor de la disponibilidad según el stock
           alert("¡Alquiler realizado con éxito!");
+
           break;
         } else {
           alert("Lo siento, no hay suficientes unidades disponibles.");
