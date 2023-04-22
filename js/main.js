@@ -28,7 +28,11 @@ Objetos.push(objeto2);
 let objeto3 = new objetosN("Silla", true, 2); // añadimos 2 sillas
 Objetos.push(objeto3);
 
-let alquilados = [];
+let MesasAlquiladas = [];
+
+let SillasAlquiladas = [];
+
+let CarpasAlquiladas = [];
 
 let EspacioDisponible = 40; //esto sera usado para añadir carpas
 
@@ -247,6 +251,14 @@ while (loop == true) {
           objeto.stock -= Nstock;
           objeto.disponible = objeto.stock > 0; // actualiza el valor de la disponibilidad según el stock
           alert("¡Alquiler realizado con éxito!");
+          //crear un array que añada el objeto alquilado a un array deo bjetos alquilados
+          switch (objetoindex) {
+            case 1:
+             
+            case 2:
+             
+            case 3: 
+          }
 
           break;
         } else {
