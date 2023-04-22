@@ -27,6 +27,44 @@ let SillaAlquilada = objeto3.nombre;
 
 let alquilados = [];
 
+function contarMesas(alquilados) {
+  let contador = 0;
+  console.log(alquilados, "contarMesas")
+  for (let i = 0; i < alquilados.length; i++) {
+    if (alquilados[i] === "Mesa") {
+      contador++;
+      
+    }
+  }
+  return contador;
+}
+
+function contarSillas(alquilados) {
+  let contador = 0;
+  for (let i = 0; i < alquilados.length; i++) {
+    if (alquilados[i]=== "Silla") {
+      contador++;
+    }
+  }
+  return contador;
+}
+
+function contarCarpas(alquilados) {
+  let contador = 0;
+  for (let i = 0; i < alquilados.length; i++) {
+    if (alquilados[i]=== "CarpaGrande") {
+      contador++;
+    }
+  }
+  return contador;
+}
+
+let MesaContador = 0;
+
+let SillasContador = 0;
+
+let CarpasContador = 0;
+
 let EspacioDisponible = 40; //esto sera usado para añadir carpas
 
 function NuevoIngreso(CarpaGrande, CarpaChica) {
@@ -37,7 +75,7 @@ while (loop == true) {
   //Bucle for para que poder reingresar al menu principal
   option = parseInt(
     prompt(
-      "¿Qué opción deseas elegir??\n 1. Nuevo Ingreso \n 2. Espacio Disponible \n 3.Alquileres \n 9. Salir"
+      "¿Qué opción deseas elegir??\n 1. Nuevo Ingreso \n 2. Espacio Disponible \n 3.Alquilar objetos \n 4. Mostrar Objetos Alquilados \n 9. Salir"
     ) //Aqui se podrá navegar por las distintas opciones
   );
 
@@ -281,6 +319,24 @@ while (loop == true) {
         alert("Lo siento, este objeto no está disponible para alquilar.");
         break;
       }
+
+    case 4:
+      let MesaContador = contarMesas(alquilados);
+
+      let SillasContador = contarSillas(alquilados);
+
+      let CarpasContador = contarCarpas(alquilados);
+
+      alert(
+        "Sea han alquilado [" +
+          MesaContador +
+          "] Mesas, [" +
+          CarpasContador +
+          "] Carpas Grandes y [" +
+          SillasContador +
+          "] Sillas"
+      );
+      break;
 
     case 9: //al ingresar "9", el bucle termina y se cierra
       alert("Adios");
