@@ -2,27 +2,32 @@
 
   voy a añadir la opcion de alquilar objetos; Voy a añadir objetos a un array con las propiedades de stock, y el nombre del arrendatario como null hasta que sean alquilados, donde se modificara ese valor */
 
-function objetosN(nombre, disponible, arrendatario, stock) {
+function objetosN(nombre, disponible, stock) {
   // creamos el metodo constructor de objetos
   this.nombre = nombre;
   this.disponible = disponible;
-  this.arrendatario = arrendatario;
   this.stock = stock;
+  Objetos.push(this);
 }
 
 // array de objetos vacío, iremos añadiendo usando el .push
 let Objetos = [];
 
-let objeto1 = new objetosN("Mesa", true, null, 3); // añadimos 3 Mesas
-Objetos.push(objeto1);
+let objeto1 = new objetosN("Mesa", true, 4); // añadimos 3 Mesas
 
-let objeto2 = new objetosN("CarpaGrande", true, null, 2); // añadimos 2 carpas grandes
-Objetos.push(objeto2);
+let objeto2 = new objetosN("CarpaGrande", true, 6); // añadimos 2 carpas grandes
 
-let objeto3 = new objetosN("Silla", true, null, 2); // añadimos 2 sillas
-Objetos.push(objeto3);
+let objeto3 = new objetosN("Silla", true, 5); // añadimos 2 sillas
 
-let EspacioDisponible = 40; //esto sea usado para añadir carpas
+let MesaAlquilada = objeto1.nombre;
+
+let CarpaAlquilada = objeto2.nombre;
+
+let SillaAlquilada = objeto3.nombre;
+
+let alquilados = [];
+
+let EspacioDisponible = 40; //esto sera usado para añadir carpas
 
 function NuevoIngreso(CarpaGrande, CarpaChica) {
   return CarpaGrande * 2 + CarpaChica;
@@ -225,7 +230,9 @@ while (loop == true) {
       //Alquileres
 
       const objetoindex = parseInt(
-        prompt("¿Qué desea alquilar? \n 1. Mesa\n 2. Carpa Grande\n 3. Silla")
+        parseInt(
+          prompt("¿Qué desea alquilar? \n 1. Mesa\n 2. Carpa Grande\n 3. Silla")
+        )
       );
       const objeto = Objetos[objetoindex - 1];
       if (objeto.disponible) {
@@ -238,7 +245,33 @@ while (loop == true) {
           // verifica si hay suficientes unidades disponibles
           objeto.stock -= Nstock;
           objeto.disponible = objeto.stock > 0; // actualiza el valor de la disponibilidad según el stock
+
+          switch (objetoindex) {
+            case 1:
+              for (var i = 1; i <= Nstock; i++) {
+                alquilados.push(MesaAlquilada);
+                console.log(alquilados);
+              }
+              break;
+
+            case 2:
+              for (var i = 1; i <= Nstock; i++) {
+                alquilados.push(CarpaAlquilada);
+                console.log(alquilados);
+              }
+              break;
+
+            case 3:
+              for (var i = 1; i <= Nstock; i++) {
+                alquilados.push(SillaAlquilada);
+                console.log(alquilados);
+              }
+              break;
+          }
           alert("¡Alquiler realizado con éxito!");
+
+          //crear un array que añada el objeto alquilado a un array deo bjetos alquilados
+
           break;
         } else {
           alert("Lo siento, no hay suficientes unidades disponibles.");
