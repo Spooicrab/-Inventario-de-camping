@@ -1,29 +1,32 @@
 /*   SEGUNDA PREENTREGA: 
-
-  voy a añadir la opcion de alquilar objetos; Voy a añadir objetos a un array con las propiedades de stock, y el nombre del arrendatario como null hasta que sean alquilados, donde se modificara ese valor */
+Para la segunda entrega, agrego los case 3 y 4 para alquilar objeto;
+ en el case 3 se evalúa las propiedades del array objetos para saber el stock del inventario del camping, en caso de estar disponibles para ser alquilados, se le resta el numero de unidades alquiladas al stock del objeto y se añade a un array de objetos alquilados;
+*/
 
 function objetosN(nombre, disponible, stock) {
-  // creamos el metodo constructor de objetos
+  // creamos el metodo constructor de objetos;
   this.nombre = nombre;
   this.disponible = disponible;
   this.stock = stock;
   Objetos.push(this);
 }
 
-// array de objetos vacío, iremos añadiendo usando el .push
-let Objetos = [];
 
-let objeto1 = new objetosN("Mesa", true, 4); // añadimos 3 Mesas
+let Objetos = []; //Aquí se almacenará los objetos que serán alquilados
 
-let objeto2 = new objetosN("CarpaGrande", true, 6); // añadimos 2 carpas grandes
+let objeto1 = new objetosN("Mesa", true, 4); // añadimos 4 Mesas;
 
-let objeto3 = new objetosN("Silla", true, 5); // añadimos 2 sillas
+let objeto2 = new objetosN("CarpaGrande", true, 6); // añadimos 6 carpas grandes;
 
-let MesaAlquilada = objeto1.nombre;
+let objeto3 = new objetosN("Silla", true, 5); // añadimos 5 sillas;
+
+let MesaAlquilada = objeto1.nombre; 
 
 let CarpaAlquilada = objeto2.nombre;
 
 let SillaAlquilada = objeto3.nombre;
+
+//Estas ultimas 3 variables son las que seran añadidas al array: alquilados [];
 
 let alquilados = [];
 
@@ -59,13 +62,15 @@ function contarCarpas(alquilados) {
   return contador;
 }
 
+//Estas 3 funciones son usadas para contar cuanto de cual objeto fueron alquilados
+
 let MesaContador = 0;
 
 let SillasContador = 0;
 
 let CarpasContador = 0;
 
-let EspacioDisponible = 40; //esto sera usado para añadir carpas
+let EspacioDisponible = 40; //Esto sera usado para añadir carpas
 
 function NuevoIngreso(CarpaGrande, CarpaChica) {
   return CarpaGrande * 2 + CarpaChica;
@@ -264,27 +269,26 @@ while (loop == true) {
 
       break;
 
-    case 3: // crear array con objetos a alquilar, usando un metodo constructor de objetos dentro de un array para poder verificar si hay stock disponible para alquilar
-      //Alquileres
+    case 3: //
 
       const objetoindex = parseInt(
         parseInt(
           prompt("¿Qué desea alquilar? \n 1. Mesa\n 2. Carpa Grande\n 3. Silla")
         )
       );
-      const objeto = Objetos[objetoindex - 1];
+      const objeto = Objetos[objetoindex - 1];  //Aquí el usuario podra elegir que objeto alquilará
       if (objeto.disponible) {
         let Nstock = prompt(
           "¿Cuántos desea alquilar? Hay " +
             objeto.stock +
             " unidades disponibles"
-        );
+        ); 
         if (Nstock <= objeto.stock) {
-          // verifica si hay suficientes unidades disponibles
+          // 
           objeto.stock -= Nstock;
-          objeto.disponible = objeto.stock > 0; // actualiza el valor de la disponibilidad según el stock
+          objeto.disponible = objeto.stock > 0; // Aqui se actualiza el stock despues de que el objeto sea alquilado y según cuantos fueron alquilados
 
-          switch (objetoindex) {
+          switch (objetoindex) {  //este switch lo que hace es añadir al array: alquilados[] el nombre del objeto que fue alquilado y, con un ciclo for, podemos pushear el numero de objetos que fueron alquilados para el caso de que se alquilen 2 objetos iguales
             case 1:
               for (var i = 1; i <= Nstock; i++) {
                 alquilados.push(MesaAlquilada);
@@ -305,10 +309,10 @@ while (loop == true) {
                 console.log(alquilados);
               }
               break;
-          }
+          } 
           alert("¡Alquiler realizado con éxito!");
 
-          //crear un array que añada el objeto alquilado a un array deo bjetos alquilados
+          //
 
           break;
         } else {
@@ -320,7 +324,7 @@ while (loop == true) {
         break;
       }
 
-    case 4:
+    case 4: //Aquí, contamos cuantos objetos alquilamos de los 3 tipos que hay disponibles y los mostramos
       let MesaContador = contarMesas(alquilados);
 
       let SillasContador = contarSillas(alquilados);
@@ -338,21 +342,14 @@ while (loop == true) {
       );
       break;
 
-    case 9: //al ingresar "9", el bucle termina y se cierra
-      alert("Adios");
+    case 9:
+      alert("Adios!");
       loop = false;
       break;
 
-    default: //en caso de ingresar algun otro valor, se volvera al menu principal.
+    default:
       alert("Opción inválida.");
   }
+
 }
-<<<<<<< HEAD
 
-//Alquileres
-
-//test 1
-
-//test 2
-=======
->>>>>>> parent of 18c2284 (Update main.js)
