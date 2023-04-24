@@ -1,6 +1,16 @@
+/* PRIMERA PREENTREGA:
+  Este programa esta pensado para ser utulizado en un camping; consta de un ciclo while para crear el menú interactivo y un switch para navegar en las opciones del mismo, tambien se usa un par de if/else en algunos casos
+  El programa calcula la capacidad disponible de un camping donde ingresan carpas chicas y grandes (estas ultimas ocupan el doble de espacio); para esto, se usan funciones varias 
+  El programa permite ingresar de una sola vez varias carpas, ya sean estas del mismo tipo (grandes o chicas) o, de distinto tipo.
+  Por ultimo, también el programa permite ver cuantas carpas pueden seguir ingresando
+  Cuando el camping está lleno, no se permite el ingreso de mas carpas.
+*/
+
 /*   SEGUNDA PREENTREGA: 
-Para la segunda entrega, agrego los case 3 y 4 para alquilar objeto;
- en el case 3 se evalúa las propiedades del array objetos para saber el stock del inventario del camping, en caso de estar disponibles para ser alquilados, se le resta el numero de unidades alquiladas al stock del objeto y se añade a un array de objetos alquilados;
+Para la segunda entrega, agrego los case 3 y 4 al menú interactivo con la función para alquilar objetos.
+En el case 3, se usa un array de objetos disponibles pára ser alquilados con propiedades varias. Según estas propiedades (stock por ejemplo) el usuario podrá o no alquilar el objeto seleccionado vía prompt.
+En caso de que el objeto pueda ser alquilado, se añade el nombre del objeto alquilado a un arra de objetos alquilados para luego, con el case 4, poder visualizar cuantos objetos fueron alquilados de los 3 tipos disponibles (Mesas, Sillas, Carpas)
+ 
 */
 
 function objetosN(nombre, disponible, stock) {
@@ -11,7 +21,6 @@ function objetosN(nombre, disponible, stock) {
   Objetos.push(this);
 }
 
-
 let Objetos = []; //Aquí se almacenará los objetos que serán alquilados
 
 let objeto1 = new objetosN("Mesa", true, 4); // añadimos 4 Mesas;
@@ -20,7 +29,7 @@ let objeto2 = new objetosN("CarpaGrande", true, 6); // añadimos 6 carpas grande
 
 let objeto3 = new objetosN("Silla", true, 5); // añadimos 5 sillas;
 
-let MesaAlquilada = objeto1.nombre; 
+let MesaAlquilada = objeto1.nombre;
 
 let CarpaAlquilada = objeto2.nombre;
 
@@ -32,11 +41,10 @@ let alquilados = [];
 
 function contarMesas(alquilados) {
   let contador = 0;
-  console.log(alquilados, "contarMesas")
+  console.log(alquilados, "contarMesas");
   for (let i = 0; i < alquilados.length; i++) {
     if (alquilados[i] === "Mesa") {
       contador++;
-      
     }
   }
   return contador;
@@ -45,7 +53,7 @@ function contarMesas(alquilados) {
 function contarSillas(alquilados) {
   let contador = 0;
   for (let i = 0; i < alquilados.length; i++) {
-    if (alquilados[i]=== "Silla") {
+    if (alquilados[i] === "Silla") {
       contador++;
     }
   }
@@ -55,7 +63,7 @@ function contarSillas(alquilados) {
 function contarCarpas(alquilados) {
   let contador = 0;
   for (let i = 0; i < alquilados.length; i++) {
-    if (alquilados[i]=== "CarpaGrande") {
+    if (alquilados[i] === "CarpaGrande") {
       contador++;
     }
   }
@@ -270,25 +278,26 @@ while (loop == true) {
       break;
 
     case 3: //
-
       const objetoindex = parseInt(
         parseInt(
           prompt("¿Qué desea alquilar? \n 1. Mesa\n 2. Carpa Grande\n 3. Silla")
         )
       );
-      const objeto = Objetos[objetoindex - 1];  //Aquí el usuario podra elegir que objeto alquilará
+      const objeto = Objetos[objetoindex - 1]; //Aquí el usuario podra elegir que objeto alquilará
       if (objeto.disponible) {
         let Nstock = prompt(
           "¿Cuántos desea alquilar? Hay " +
             objeto.stock +
             " unidades disponibles"
-        ); 
+        );
         if (Nstock <= objeto.stock) {
-          // 
+          //
           objeto.stock -= Nstock;
           objeto.disponible = objeto.stock > 0; // Aqui se actualiza el stock despues de que el objeto sea alquilado y según cuantos fueron alquilados
 
-          switch (objetoindex) {  //este switch lo que hace es añadir al array: alquilados[] el nombre del objeto que fue alquilado y, con un ciclo for, podemos pushear el numero de objetos que fueron alquilados para el caso de que se alquilen 2 objetos iguales
+          switch (
+            objetoindex //este switch lo que hace es añadir al array: alquilados[] el nombre del objeto que fue alquilado y, con un ciclo for, podemos pushear el numero de objetos que fueron alquilados para el caso de que se alquilen 2 objetos iguales
+          ) {
             case 1:
               for (var i = 1; i <= Nstock; i++) {
                 alquilados.push(MesaAlquilada);
@@ -309,7 +318,7 @@ while (loop == true) {
                 console.log(alquilados);
               }
               break;
-          } 
+          }
           alert("¡Alquiler realizado con éxito!");
 
           //
@@ -350,6 +359,4 @@ while (loop == true) {
     default:
       alert("Opción inválida.");
   }
-
 }
-
