@@ -93,30 +93,24 @@ while (loop == true) {
   );
 
   switch (option) {
-    case 1: //Nuevo Ingreso de carpas, se puede agregar grandes y chicas. En caso de que vengan familias con distintos tipos de carpa se podrá ingresarlos sin tener que salir y volver a entrar al menú usando la opcion de ingreso multiple.
+    case 1: //Nuevo Ingreso de carpas, se puede agregar grandes y chicas.
       if (EspacioDisponible == 0) {
-        //En caso de estar llenos, no se habilitará nuevos ingresos
-
-        alert("Estamos llenos!");
+        alert("Estamos llenos!"); //En caso de estar llenos, no se habilitará nuevos ingresos
         break;
       }
 
       let NIngreso = parseInt(
-        //aqui podras elegir que tipos de carpas entrarán; solo chicas/solo grandes o ambas "mixeadas"
         prompt(
-          "¿Qué tipo de ingreso? \n 1. Ingreso de Tipo Unico. \n 2. Multiple Tipo de Carpas. \n 9. Salir"
+          "¿Qué tipo de ingreso? \n 1. Ingreso de Tipo Unico. \n 2. Multiple Tipo de Carpas. \n 9. Salir" //Aqui podras elegir que tipos de carpas entrarán; solo chicas/solo grandes o ambas "mixeadas"
         )
       );
-
+      //Ingreso tipo unico:
       if (NIngreso == 1) {
-        //Ingreso tipo unico
-
         let Ingreso = parseInt(
-          prompt("Qué tipo de carpa? \n 1. Carpa Grande. \n 2. Carpa Chica.")
-        ); //elegimos el tipo de carpa
+          prompt("Qué tipo de carpa? \n 1. Carpa Grande. \n 2. Carpa Chica.") //Elegimos el tipo de carpa
+        );
 
         if (Ingreso == 1) {
-          //ingresamos cuantas
           let CarpaGrande = parseInt(prompt("Ingrese cantidad de Carpas"));
 
           let CarpaChica = 0;
@@ -124,27 +118,26 @@ while (loop == true) {
           let Resultado = NuevoIngreso(CarpaGrande, CarpaChica);
 
           if (Resultado == EspacioDisponible) {
-            // aqui seteamos el espacio disponible en 0 para volver al menu principal y cerrar el programa manualmente; no se habilitaran mas ingresos
-            alert("Ingreso Exitoso, No hay mas espacio Disponible");
+            alert("Ingreso Exitoso, No hay mas espacio Disponible"); // Aqui seteamos el espacio disponible en 0 para volver al menu principal y cerrar el programa manualmente; No se habilitaran mas ingresos.
 
             EspacioDisponible = 0;
+
             break;
           } else if (Resultado > EspacioDisponible) {
-            //No hay tanto lugar, volviendo al menu principal
-
             alert(
-              "No hay espacio suficiente para el valor ingresado, Por favor Revise el espacio Disponible"
+              "No hay espacio suficiente para el valor ingresado, Por favor Revise el espacio Disponible" //No hay tanto lugar, volviendo al menu principal
             );
             break;
           } else if (Resultado < EspacioDisponible) {
             alert("Ingreso exitoso!"); //El ingreso fue exitoso y se puede seguir ingresando carpas. El espacio disponible es almacenado y se sigue corriendo el programa con este dato presente
 
             EspacioDisponible = EspacioDisponible - Resultado;
+
             break;
           } else {
             alert("Error!");
 
-            Ingreso = 1; //Vuelve a intentarlo
+            Ingreso = 1;
           }
         } else if (Ingreso == 2) {
           let CarpaChica = parseInt(prompt("Ingrese cantidad de Carpas"));
@@ -201,9 +194,7 @@ while (loop == true) {
         let Resultado = NuevoIngreso(CarpaGrande, CarpaChica);
 
         if (Resultado == EspacioDisponible) {
-          //llenos, volvemos al menu principal
-
-          alert("Ingreso Exitoso, No hay mas espacio Disponible");
+          alert("Ingreso Exitoso, No hay mas espacio Disponible"); //Llenos, volvemos al menu principal
 
           EspacioDisponible = 0;
 
@@ -215,20 +206,20 @@ while (loop == true) {
             "No hay espacio suficiente para el valor ingresado, Por favor Revise el espacio Disponible"
           );
 
-          break; //Para volver al menu principal
+          break;
         } else if (Resultado < EspacioDisponible) {
           alert("Ingreso exitoso!");
 
           EspacioDisponible = EspacioDisponible - Resultado;
 
-          break; //Para volver al menu principal
+          break;
         } else {
           alert("Error!");
 
-          NIngreso = 2; //Vuelve a intentarlo
+          NIngreso = 2;
         }
       } else {
-        alert("--Error-- \n Volviendo al menú Principal.");
+        alert("--Error! \n Volviendo al menú Principal.");
 
         break;
       }
@@ -236,7 +227,7 @@ while (loop == true) {
 
     case 2: //Aqui se vera cuanto espacio disponible hay para nuevos ingresos
       if (EspacioDisponible == 0) {
-        //En caso de estar llenos, no se habilitará nuevos ingresos
+        //En caso de estar llenos, se cierra aquí
 
         alert("Estamos llenos!");
       }
@@ -245,39 +236,35 @@ while (loop == true) {
 
       let GrandeDisp = Math.floor(EspacioDisponible / 2);
 
+      //Usé para redondear abajo y arriba para que el usuario pueda dar un "vistazo rapido" a los espacios
+
       alert(
         "Hay espacio para " +
           GrandeDisp +
           " Carpas Grandes y para " +
           ChicaDisp +
           " Carpas chicas"
-      ); //aqui mostramos caunto espacio hay para carpas grandes Y chicas;
+      );
 
       let EspacioNav = parseInt(
-        //aqui podremos elegir cuanto espacio disponible hay para carpas grandes O chicas
         prompt(
-          "Elija una opción. \n 1. Ver espacio disponible solo para Carpas chicas \n 2. Ver espacio disponible solo para Carpas Grandes"
+          "Elija una opción. \n 1. Ver espacio disponible solo para Carpas chicas \n 2. Ver espacio disponible solo para Carpas Grandes" //aqui podremos elegir mostrar cuanto espacio disponible hay para carpas grandes O chicas
         )
       );
 
       switch (EspacioNav) {
         case 1:
           alert("Hay espacio para " + EspacioDisponible + " Carpas chicas.");
-
           break;
-
         case 2:
           alert("Hay espacio para " + GrandeDisp + " Carpas Grandes.");
-
           break;
-
         default:
           alert("Ingrese una opcion valida");
       }
-
       break;
 
-    case 3: //
+    case 3: //Aquí entramos en la segunda pre-entrega; comenzamos a usar arrays, objetos y arrays de objetos con propiedades;
       const objetoindex = parseInt(
         parseInt(
           prompt("¿Qué desea alquilar? \n 1. Mesa\n 2. Carpa Grande\n 3. Silla")
