@@ -278,7 +278,6 @@ while (loop == true) {
             " unidades disponibles"
         );
         if (Nstock <= objeto.stock) {
-          //
           objeto.stock -= Nstock;
           objeto.disponible = objeto.stock > 0; // Aqui se actualiza el stock despues de que el objeto sea alquilado y según cuantos fueron alquilados
 
@@ -307,8 +306,6 @@ while (loop == true) {
               break;
           }
           alert("¡Alquiler realizado con éxito!");
-
-          //
 
           break;
         } else {
